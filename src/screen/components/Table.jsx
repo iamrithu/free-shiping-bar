@@ -159,9 +159,9 @@ export const Table = ({ closeAnimate }) => {
                         <ActiveButton delete onClick={() => deleted(info.uuid)}>
                           Delete
                         </ActiveButton>
-                        <ActiveButton delete onClick={() => getScript()}>
-                          check
-                        </ActiveButton>
+                        {/* <ActiveButton delete onClick={() => getScript()}> */}
+                        {/* check */}
+                        {/* </ActiveButton> */}
                       </Stack>,
                     ];
                   })}
