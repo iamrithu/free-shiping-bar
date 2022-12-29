@@ -177,12 +177,10 @@ router.delete("/delete/:id", async (req, res) => {
 });
 
 router.get("/get-script", async (req, res) => {
-  const test_session = await Shopify.Utils.loadCurrentSession(req, res, true);
-  console.log(test_session);
   try {
     const data = await prisma.shipbars.findMany({
       where: {
-        shop: test_session.shop,
+        shop: String(req.query.shop),
         isActive: "true",
       },
     });

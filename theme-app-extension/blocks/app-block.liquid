@@ -17,9 +17,8 @@ button.style.display="none"
 })
 
 const url = `https://free-shipping-bars.herokuapp.com/get-script?shop=${window.location.hostname}`;
-const url2 = `https://free-shipping-bars.herokuapp.com/get-script`;
 
-fetch(url2)
+fetch(url)
   .then(response => response.json())
   .then(data => {
       if(data.lenght===0){
