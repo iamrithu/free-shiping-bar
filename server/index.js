@@ -36,6 +36,7 @@ const ACTIVE_SHOPIFY_SHOPS = {};
 Shopify.Webhooks.Registry.addHandler("APP_UNINSTALLED", {
   path: "/webhooks",
   webhookHandler: async (topic, shop, body) => {
+    console.log("app deleted");
     delete ACTIVE_SHOPIFY_SHOPS[shop];
   },
 });
