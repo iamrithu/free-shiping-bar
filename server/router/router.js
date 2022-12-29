@@ -178,6 +178,7 @@ router.delete("/delete/:id", async (req, res) => {
 
 router.get("/get-script", async (req, res) => {
   const test_session = await Shopify.Utils.loadCurrentSession(req, res, true);
+  console.log(test_session);
   try {
     const data = await prisma.shipbars.findMany({
       where: {
@@ -185,9 +186,6 @@ router.get("/get-script", async (req, res) => {
         isActive: "true",
       },
     });
-    // var demo = data.sort(function (a, b) {
-    // return a.id - b.id;
-    // });
     res.status(200).send(data);
   } catch (error) {
     res.status(404).send(error.message);
