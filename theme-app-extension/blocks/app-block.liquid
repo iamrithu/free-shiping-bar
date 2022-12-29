@@ -16,7 +16,7 @@ button.addEventListener("click",()=>{
 button.style.display="none"
 })
 
-const url = `https://87d6-2405-201-e021-18ae-bc92-d01f-6428-98e5.ngrok.io/get-script?shop=${window.location.hostname}`
+const url = `https://free-shipping-bars.herokuapp.com/get-script?shop=${window.location.hostname}`
 fetch(url)
   .then(response => response.json())
   .then(data => {
