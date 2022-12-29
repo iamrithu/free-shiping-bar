@@ -71,10 +71,6 @@ export async function createServer(
 
   app.use("/", router);
 
-  app.use("/demo", (req, res) => {
-    res.send("hi this working");
-  });
-
   app.get("/products-count", verifyRequest(app), async (req, res) => {
     const session = await Shopify.Utils.loadCurrentSession(req, res, true);
     const { Product } = await import(
