@@ -92,31 +92,31 @@ export async function createServer(
 
   app.use(express.json());
 
-  app.post(
-    "/customers/redact",
-    express.json(),
-    verifyWebhookRequest,
-    async (req, res) => {
-      res.status(200).send();
-    }
-  );
+  // app.post(
+  //   "/customers/redact",
+  //   express.json(),
+  //   verifyWebhookRequest,
+  //   async (req, res) => {
+  //     res.status(200).send();
+  //   }
+  // );
 
-  app.post(
-    "/customers/data_request",
-    express.json(),
-    verifyWebhookRequest,
-    async (req, res) => {
-      res.status(200).send();
-    }
-  );
-  app.post(
-    "/shop/redact",
-    express.json(),
-    verifyWebhookRequest,
-    async (req, res) => {
-      res.status(200).send();
-    }
-  );
+  // app.post(
+  //   "/customers/data_request",
+  //   express.json(),
+  //   verifyWebhookRequest,
+  //   async (req, res) => {
+  //     res.status(200).send();
+  //   }
+  // );
+  // app.post(
+  //   "/shop/redact",
+  //   express.json(),
+  //   verifyWebhookRequest,
+  //   async (req, res) => {
+  //     res.status(200).send();
+  //   }
+  // );
   function verifyWebhookRequest(req, res, next) {
     try {
       const generatedHash = crypto
