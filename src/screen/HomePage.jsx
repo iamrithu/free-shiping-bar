@@ -115,14 +115,18 @@ export function HomePage() {
 
               <li>Add 'Content' and 'Design' configuration details.</li>
               <li>
-                Once you complete it, click "Create Template" for creating new
-                template or click "Cancel" for abort the function.
+                Once you complete it, click "Create Template" for creating a new
+                template or click "Cancel" to abort the function.
               </li>
 
               <li>
-                If a new template is created , it will be on pause state.So
-                click "Paused" button to activate the template or click
-                "Actived" button to paused the template.
+                If a new template is created, it will be in a pause state. So
+                click the "Paused" button to activate the template or click the
+                "Activate" button to pause the template.
+              </li>
+              <li>
+                Then go to the online store select "Themes" click "Customize"
+                then go to "App Embeds" and enable the extension.
               </li>
             </ol>
           </div>
