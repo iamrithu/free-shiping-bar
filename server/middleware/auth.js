@@ -75,20 +75,20 @@ export default function applyAuthMiddleware(app) {
 
       // Redirect to app with shop parameter upon auth
       res.redirect(`/?shop=${session.shop}&host=${host}`);
-      // const data = await prisma.shops.findUnique({
-      // where: { name: session.shop },
-      // });
-      // if (data) {
-      // console.log("shop already exit");
-      // } else {
-      // await prisma.shops.create({
-      // data: {
-      // uuid: uuid(),
-      // shopId: session.id,
-      // name: session.shop,
-      // },
-      // });
-      // }
+      const data = await prisma.shops.findUnique({
+        where: { name: session.shop },
+      });
+      if (data) {
+        console.log("shop already exit");
+      } else {
+        await prisma.shops.create({
+          data: {
+            uuid: uuid(),
+            shopId: session.id,
+            name: session.shop,
+          },
+        });
+      }
     } catch (e) {
       switch (true) {
         case e instanceof Shopify.Errors.InvalidOAuthError:
