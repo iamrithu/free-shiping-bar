@@ -44,27 +44,13 @@ export default function applyAuthMiddleware(app) {
   });
 
   app.get("/auth/callback", async (req, res) => {
+    console.log(" i am from callback");
     try {
       const session = await Shopify.Auth.validateAuthCallback(
         req,
         res,
         req.query
       );
-      const data = await prisma.shops.findUnique({
-        where: { name: session.shop },
-      });
-      if (data) {
-        console.log("shop already exit");
-      } else {
-        await prisma.shops.create({
-          data: {
-            uuid: uuid(),
-            shopId: session.id,
-            name: session.shop,
-          },
-        });
-      }
-
       const host = req.query.host;
       app.set(
         "active-shopify-shops",
@@ -80,14 +66,31 @@ export default function applyAuthMiddleware(app) {
         path: "/webhooks",
       });
 
+      console.log(!response["APP_UNINSTALLED"].success);
+
       if (!response["APP_UNINSTALLED"].success) {
         console.log(
           `Failed to register APP_UNINSTALLED webhook: ${response.result}`
         );
       }
 
+      console.log(" app un installed successfully");
       // Redirect to app with shop parameter upon auth
       res.redirect(`/?shop=${session.shop}&host=${host}`);
+      const data = await prisma.shops.findUnique({
+        where: { name: session.shop },
+      });
+      if (data) {
+        console.log("shop already exit");
+      } else {
+        await prisma.shops.create({
+          data: {
+            uuid: uuid(),
+            shopId: session.id,
+            name: session.shop,
+          },
+        });
+      }
     } catch (e) {
       switch (true) {
         case e instanceof Shopify.Errors.InvalidOAuthError:
