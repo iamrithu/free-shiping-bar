@@ -53,23 +53,19 @@ export async function createServer(
   app.use(cookieParser(Shopify.Context.API_SECRET_KEY));
 
   applyAuthMiddleware(app);
-
-  app.use(body.json());
-  app.use(cors());
-
   app.post("/webhooks", async (req, res) => {
-    console.log("i am deleted");
-    await Shopify.Webhooks.Registry.process(req, res);
     try {
       await Shopify.Webhooks.Registry.process(req, res);
       console.log(`Webhook processed, returned status code 200`);
+      res.status(200).send();
     } catch (error) {
       console.log(`Failed to process webhook: ${error}`);
-      if (!res.headersSent) {
-        res.status(500).send(error.message);
-      }
+      res.status(500).send(error.message);
     }
   });
+
+  app.use(body.json());
+  app.use(cors());
 
   app.use("/", router);
 
