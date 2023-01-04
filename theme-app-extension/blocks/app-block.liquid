@@ -16,7 +16,7 @@ button.addEventListener("click",()=>{
 button.style.display="none"
 })
 
-const url = `https://free-shipping-bars.herokuapp.com/get-script?shop=${window.location.hostname}`
+const url = `https://free-shipping-bars.herokuapp.com/getBanner?shop=${window.location.hostname}`
 fetch(url)
   .then(response => response.json())
   .then(data => {

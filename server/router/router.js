@@ -176,7 +176,7 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-router.get("/get-script", async (req, res) => {
+router.get("/getBanner", async (req, res) => {
   try {
     const data = await prisma.shipbars.findMany({
       where: {

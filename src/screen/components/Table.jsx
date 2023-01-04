@@ -45,12 +45,6 @@ export const Table = ({ closeAnimate }) => {
       }
     });
   }
-  async function getScript() {
-    const count = await fetch(`/get-script`).then((res) => res.json());
-
-    console.log(count);
-  }
-
   async function deleted(e) {
     var data = await fetch(`/delete/${e}`, {
       method: "Delete",
