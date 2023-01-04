@@ -100,7 +100,7 @@ export default function applyAuthMiddleware(app) {
           break;
         case e instanceof Shopify.Errors.CookieNotFound:
         case e instanceof Shopify.Errors.SessionNotFound:
-          // This is likely because the OAuth session cookie expired before the merchant approved the request
+          //This is likely because the OAuth session cookie expired before the merchant approved the request
           res.redirect(`/auth?shop=${req.query.shop}`);
           break;
         default:
