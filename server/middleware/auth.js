@@ -92,6 +92,7 @@ export default function applyAuthMiddleware(app) {
         });
       }
     } catch (e) {
+      console.log("i got this error");
       switch (true) {
         case e instanceof Shopify.Errors.InvalidOAuthError:
           res.status(400);

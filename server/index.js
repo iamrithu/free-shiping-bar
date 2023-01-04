@@ -58,6 +58,7 @@ export async function createServer(
   app.use(cors());
 
   app.post("/webhooks", async (req, res) => {
+    console.log(" i am not woeking");
     try {
       await Shopify.Webhooks.Registry.process(req, res);
       console.log(`Webhook processed, returned status code 200`);
