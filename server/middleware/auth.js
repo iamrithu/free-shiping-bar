@@ -79,7 +79,6 @@ export default function applyAuthMiddleware(app) {
         where: { name: session.shop },
       });
       if (data) {
-        console.log("shop already exit");
       } else {
         await prisma.shops.create({
           data: {

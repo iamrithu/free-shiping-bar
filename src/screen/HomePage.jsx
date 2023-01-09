@@ -95,11 +95,11 @@ export function HomePage() {
                 justifyContent: "flex-start",
               }}
             >
-              <h1 style={{ marginRight: "5px" }}>INSTUCTION:</h1>
+              <h1 style={{ marginRight: "5px" }}>INSTRUCTION:</h1>
               <Icon source={PlayCircleMajor} color="blue" />
               <a
                 style={{ marginLeft: "3sdfsdfsdfsdfsdfsdfsdfsdfpx" }}
-                href="https://www.loom.com/share/ff3cf3cbeb91461ebde2609eee85f515"
+                href="https://www.loom.com/share/f8404a559b3e4f40bd117d6ebd995361"
                 target="_blank"
               >
                 Video Tutorial
@@ -146,7 +146,8 @@ export function HomePage() {
             <ol>
               <li>Refresh the website, the bar should display properly.</li>
               <li>
-                If it still does not work, kindly contact us at demo@gmail.com.
+                If it still does not work, kindly contact us at
+                support@themeparrot.com.
               </li>
             </ol>
           </div>
