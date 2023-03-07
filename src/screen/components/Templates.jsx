@@ -18,7 +18,7 @@ const Templates = ({ getTemplate, closeTemplate }) => {
 
   const options = [
     { label: "Fixed", value: "fixed" },
-    { label: "Scrollable ", value: "absolute" },
+    { label: "Scrollable ", value: "relative" },
   ];
   const closeButton = [
     { label: "NO", value: "NO" },
