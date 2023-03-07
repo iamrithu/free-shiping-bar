@@ -4,9 +4,7 @@
 <button id="btn" style="position: absolute;top:10px;right:10px; width:50px;z-index:1000000; display: none">
     x
 </button>
-<style>
-body{padding-top: 37px;}
-</style>
+
 
 <script>
 
@@ -28,7 +26,7 @@ fetch(url)
       }else{
         announceBar.innerHTML =`<p style="color:${data[0].fontColor};  font-size:${data[0].fontSize}px;"> ${data[0].content}<span style="color:${data[0].specialTextColor}; margin-left:5px;font-weight:bolder">${data[0].currencyContent}</span><p/>`;    
         announceBar.style.cssText=`
-        position:${data[0].position};
+        position:${data[0].position==="fixed"?'sticky':'relative'};
         top: 0;
         left: 0 ;
         height:37px;
@@ -51,7 +49,7 @@ fetch(url)
 
 {% schema %}
   {
-    "name": "custom annnoucement bar",
+    "name": "custom announcement bar",
     "target": "head",
     "settings": []
   }
