@@ -1,12 +1,16 @@
 <div  id="demo">
 
 </div>
-<button id="btn" style="position: absolute;top:10px;right:10px; width:50px;z-index:1001; display: none">
-    close
+<button id="btn" style="position: absolute;top:10px;right:10px; width:50px;z-index:1000000; display: none">
+    x
 </button>
+<style>
+</style>
 
 <script>
-let a = document.querySelector(".announcement-bar");
+
+
+
 let announceBar = document.getElementById("demo");
  
 let button = document.getElementById("btn");
@@ -14,7 +18,7 @@ button.addEventListener("click",()=>{
  announceBar.style.display="none"
 button.style.display="none"
 })
-const url = `https://free-shipping-bars.herokuapp.com/get-script?shop=${window.location.hostname}`
+const url = `https://free-shipping-bars.herokuapp.com/getBanner?shop=${window.location.hostname}`
 fetch(url)
   .then(response => response.json())
   .then(data => {
@@ -26,10 +30,10 @@ fetch(url)
         position:${data[0].position};
         top: 0;
         left: 0 ;
-        height:40px;
+        height:37px;
         width:100%;
         background:${data[0].background};
-        z-index:1000;
+        z-index:10001;
         font-family: ${data[0].fontFamily};
         display:flex;
         align-items:center;
@@ -46,7 +50,7 @@ fetch(url)
 
 {% schema %}
   {
-    "name": "custom annnoucement bar",
+    "name": "custom announcement bar",
     "target": "head",
     "settings": []
   }
