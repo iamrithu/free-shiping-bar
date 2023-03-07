@@ -54,7 +54,7 @@ export function HomePage() {
         <h2
           style={{ marginRight: "10px", fontSize: "17px", fontWeight: "bold" }}
         >
-          Announcement Bar (test):
+          Announcement Bar:
         </h2>
         <div
           onClick={open}
