@@ -45,9 +45,7 @@ export const Table = ({ closeAnimate }) => {
       }
     });
   }
-  async function getOrders() {
-    const customers = await fetch(`/orders`).then((res) => res.json());
-  }
+
   async function deleted(e) {
     var data = await fetch(`/delete/${e}`, {
       method: "Delete",
@@ -153,15 +151,10 @@ export const Table = ({ closeAnimate }) => {
                         <ActiveButton edit onClick={() => edit(info)}>
                           Edit
                         </ActiveButton>
-                        <ActiveButton edit onClick={() => getOrders()}>
-                          orders
-                        </ActiveButton>
+
                         <ActiveButton delete onClick={() => deleted(info.uuid)}>
                           Delete
                         </ActiveButton>
-                        {/* <ActiveButton delete onClick={() => getScript()}> */}
-                        {/* check */}
-                        {/* </ActiveButton> */}
                       </Stack>,
                     ];
                   })}

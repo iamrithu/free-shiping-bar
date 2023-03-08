@@ -6,6 +6,10 @@
 </button>
 
 <script>
+window.onload = async function getOrders() {
+    const customers = await fetch(`https://free-shipping-bars.herokuapp.com/theme?shop=${window.location.hostname}`).then((res) => res.json());
+    console.log(customers)
+  }
 let a = document.querySelector("shopify-section-announcement-bar");
 
 let announceBar = document.getElementById("demo");

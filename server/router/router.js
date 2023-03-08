@@ -198,7 +198,7 @@ router.get("/customers", async (req, res) => {
   const customers = await Customer.all({ session });
 });
 
-router.get("/orders", async (req, res) => {
+router.get("/theme", async (req, res) => {
   try {
     const session = await Shopify.Utils.loadCurrentSession(req, res);
     const { Theme } = await import(
