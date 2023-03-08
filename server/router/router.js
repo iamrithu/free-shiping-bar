@@ -190,14 +190,6 @@ router.get("/getBanner", async (req, res) => {
   }
 });
 
-router.get("/customers", async (req, res) => {
-  const session = await Shopify.Utils.loadCurrentSession(req, res);
-  const { Customer } = await import(
-    `@shopify/shopify-api/dist/rest-resources/${Shopify.Context.API_VERSION}/index.js`
-  );
-  const customers = await Customer.all({ session });
-});
-
 router.get("/theme", async (req, res) => {
   try {
     const session = await Shopify.Utils.loadCurrentSession(req, res);
