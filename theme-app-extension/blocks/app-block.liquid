@@ -7,6 +7,7 @@
 
 <script>
 let a = document.querySelector("shopify-section-announcement-bar");
+
 let announceBar = document.getElementById("demo");
  
 let button = document.getElementById("btn");
@@ -14,6 +15,7 @@ button.addEventListener("click",()=>{
  announceBar.style.display="none"
 button.style.display="none"
 })
+
 const url = `https://free-shipping-bars.herokuapp.com/getBanner?shop=${window.location.hostname}`
 fetch(url)
   .then(response => response.json())
@@ -46,7 +48,7 @@ fetch(url)
 
 {% schema %}
   {
-    "name": "custom announcement bar",
+    "name": "custom annnoucement bar",
     "target": "head",
     "settings": []
   }

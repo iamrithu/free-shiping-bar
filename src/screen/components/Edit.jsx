@@ -29,7 +29,8 @@ const Edit = ({ getTemplate, closeTemplate, value }) => {
     { label: "Place symbol after the amount", value: "after" },
   ];
   const Currency = [
-    { label: "India Rupees", value: "INR" },
+    { label: "--", value: "" },
+    { label: "India Rupees", value: "₹" },
     { label: "United State Dollars", value: "$" },
     { label: "United Kingdom", value: "£" },
     { label: "Euro", value: "€" },
@@ -91,7 +92,7 @@ const Edit = ({ getTemplate, closeTemplate, value }) => {
   const [font_family, set_font_family] = useState("");
   const [font_size, set_font_size] = useState("");
   const [selected, setSelected] = useState("fixed");
-  const [currency, setCurrency] = useState("INR");
+  const [currency, setCurrency] = useState("");
   const [shipingGoal, setShipingGoal] = useState("");
   const [currencyPosition, setCurrencyPosition] = useState("before");
   const handleSelectChange = useCallback((value) => setSelected(value), []);
@@ -183,7 +184,7 @@ const Edit = ({ getTemplate, closeTemplate, value }) => {
             autoComplete="off"
           />
           <Select
-            label="Currency :"
+            label="Currency Position :"
             options={CurrencyPosition}
             onChange={currencyPositionChange}
             value={currencyPosition}
