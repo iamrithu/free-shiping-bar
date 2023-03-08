@@ -29,7 +29,8 @@ const Templates = ({ getTemplate, closeTemplate }) => {
     { label: "Place symbol before the amount", value: "before" },
   ];
   const Currency = [
-    { label: "India Rupees", value: "INR" },
+    { label: "--", value: "" },
+    { label: "India Rupees", value: "₹" },
     { label: "United State Dollars", value: "$" },
     { label: "United Kingdom", value: "£" },
     { label: "Euro", value: "€" },
