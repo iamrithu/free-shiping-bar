@@ -1,15 +1,12 @@
 <div  id="demo">
 
 </div>
-<button id="btn" style="position: absolute;top:10px;right:10px; width:50px;z-index:1000000; display: none">
-    x
+<button id="btn" style="position: absolute;top:10px;right:10px; width:50px;z-index:1001; display: none">
+    close
 </button>
 
-
 <script>
-
-
-
+let a = document.querySelector("shopify-section-announcement-bar");
 let announceBar = document.getElementById("demo");
  
 let button = document.getElementById("btn");
@@ -26,13 +23,13 @@ fetch(url)
       }else{
         announceBar.innerHTML =`<p style="color:${data[0].fontColor};  font-size:${data[0].fontSize}px;"> ${data[0].content}<span style="color:${data[0].specialTextColor}; margin-left:5px;font-weight:bolder">${data[0].currencyContent}</span><p/>`;    
         announceBar.style.cssText=`
-        position:${data[0].position==="fixed"?'sticky':'relative'};
+        position:${data[0].position};
         top: 0;
         left: 0 ;
-        height:37px;
+        height:40px;
         width:100%;
         background:${data[0].background};
-        z-index:10001;
+        z-index:1000;
         font-family: ${data[0].fontFamily};
         display:flex;
         align-items:center;
