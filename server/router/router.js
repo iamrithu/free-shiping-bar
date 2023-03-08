@@ -204,11 +204,9 @@ router.get("/theme", async (req, res) => {
     const { Theme } = await import(
       `@shopify/shopify-api/dist/rest-resources/${Shopify.Context.API_VERSION}/index.js`
     );
-    const orders = await Theme.all({ session });
-
-    console.log("i am not error" + orders);
+    const theme = await Theme.all({ session });
   } catch (error) {
-    console.log(`i am error ${error}`);
+    console.log(`Something went wrong when getting themes.`);
   }
 });
 
