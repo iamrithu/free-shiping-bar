@@ -37,8 +37,6 @@ export const Table = ({ closeAnimate }) => {
   const [editData, setEditData] = useState();
 
   async function getTemplate() {
-    const customers = await fetch(`/orders`).then((res) => res.json());
-
     const count = await fetch(`/announcementBar`).then((res) => res.json());
     set_templates(count);
     count.map((e) => {
@@ -46,6 +44,9 @@ export const Table = ({ closeAnimate }) => {
         setActive(e.uuid);
       }
     });
+  }
+  async function getOrders() {
+    const customers = await fetch(`/orders`).then((res) => res.json());
   }
   async function deleted(e) {
     var data = await fetch(`/delete/${e}`, {
@@ -151,6 +152,9 @@ export const Table = ({ closeAnimate }) => {
                         </ActiveButton>
                         <ActiveButton edit onClick={() => edit(info)}>
                           Edit
+                        </ActiveButton>
+                        <ActiveButton edit onClick={() => getOrders()}>
+                          orders
                         </ActiveButton>
                         <ActiveButton delete onClick={() => deleted(info.uuid)}>
                           Delete
