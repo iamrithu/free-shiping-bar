@@ -44,6 +44,7 @@ export const Table = ({ closeAnimate }) => {
         setActive(e.uuid);
       }
     });
+    const theme = await fetch(`/theme`).then((res) => res.json());
   }
 
   async function deleted(e) {
