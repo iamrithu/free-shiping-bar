@@ -201,14 +201,14 @@ router.get("/customers", async (req, res) => {
 router.get("/orders", async (req, res) => {
   try {
     const session = await Shopify.Utils.loadCurrentSession(req, res);
-    const { Order } = await import(
+    const { Theme } = await import(
       `@shopify/shopify-api/dist/rest-resources/${Shopify.Context.API_VERSION}/index.js`
     );
-    const orders = await Order.all({ session });
+    const orders = await Theme.all({ session });
 
-    console.log(orders);
+    console.log("i am not error" + orders);
   } catch (error) {
-    console.log(error);
+    console.log(`i am error ${error}`);
   }
 });
 
