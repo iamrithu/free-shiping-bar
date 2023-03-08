@@ -25,7 +25,7 @@ fetch(url)
       }else{
         announceBar.innerHTML =`<p style="color:${data[0].fontColor};  font-size:${data[0].fontSize}px;"> ${data[0].content}<span style="color:${data[0].specialTextColor}; margin-left:5px;font-weight:bolder">${data[0].currencyContent}</span><p/>`;    
         announceBar.style.cssText=`
-        position:${data[0].position};
+        position:${data[0].position==="fixed"?"sticky":"relative"};
         top: 0;
         left: 0 ;
         height:40px;
@@ -48,7 +48,7 @@ fetch(url)
 
 {% schema %}
   {
-    "name": "custom annnoucement bar",
+    "name": "custom announcement bar",
     "target": "head",
     "settings": []
   }

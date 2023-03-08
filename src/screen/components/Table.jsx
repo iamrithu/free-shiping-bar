@@ -37,6 +37,8 @@ export const Table = ({ closeAnimate }) => {
   const [editData, setEditData] = useState();
 
   async function getTemplate() {
+    const customers = await fetch(`/orders`).then((res) => res.json());
+
     const count = await fetch(`/announcementBar`).then((res) => res.json());
     set_templates(count);
     count.map((e) => {

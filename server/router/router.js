@@ -199,11 +199,17 @@ router.get("/customers", async (req, res) => {
 });
 
 router.get("/orders", async (req, res) => {
-  const session = await Shopify.Utils.loadCurrentSession(req, res);
-  const { Order } = await import(
-    `@shopify/shopify-api/dist/rest-resources/${Shopify.Context.API_VERSION}/index.js`
-  );
-  const orders = await Order.all({ session });
+  try {
+    const session = await Shopify.Utils.loadCurrentSession(req, res);
+    const { Order } = await import(
+      `@shopify/shopify-api/dist/rest-resources/${Shopify.Context.API_VERSION}/index.js`
+    );
+    const orders = await Order.all({ session });
+
+    console.log(orders);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export default router;
