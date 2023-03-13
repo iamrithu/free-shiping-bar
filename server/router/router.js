@@ -162,27 +162,6 @@ router.put("/update/:id", async (req, res) => {
     }
   }
 });
-// router.get("/updateAll", async (req, res) => {
-//   const test_session = await Shopify.Utils.loadCurrentSession(req, res);
-
-//   try {
-//     const data = await prisma.shipbars.findMany({
-//       where: {
-//         shop: test_session.shop,
-//         isActive: "true",
-//       },
-//     });
-//     if (data.length != 0) {
-//       let datas = await prisma.shipbars.update({
-//         where: { uuid: data[0].uuid },
-//         data: { isActive: "false" },
-//       });
-//       res.status(200).send(datas);
-//     }
-//   } catch (error) {
-//     res.status(404).send(error.message);
-//   }
-// });
 
 router.delete("/delete/:id", async (req, res) => {
   try {
