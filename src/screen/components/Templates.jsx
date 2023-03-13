@@ -204,13 +204,15 @@ const Templates = ({ getTemplate, closeTemplate }) => {
       closeButton: close_button,
     };
 
-    var post = await fetch("/announcementBar", {
+    await fetch("/announcementBar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(template),
+    }).then((response) => {
+      getTemplate();
     });
+
     closeTemplate();
-    getTemplate();
   }
 
   return (

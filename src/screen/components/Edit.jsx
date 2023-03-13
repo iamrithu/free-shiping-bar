@@ -126,9 +126,10 @@ const Edit = ({ getTemplate, closeTemplate, value }) => {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(template),
+    }).then((data) => {
+      getTemplate();
     });
     closeTemplate();
-    getTemplate();
   }
   useEffect(async () => {
     const user = await fetch(`/getUser/${value}`).then((res) => res.json());

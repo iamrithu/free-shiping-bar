@@ -1,7 +1,16 @@
-import { Card, DataTable, Page, Button, Stack, Layout } from "@shopify/polaris";
+import {
+  Card,
+  DataTable,
+  Page,
+  Button,
+  Stack,
+  Layout,
+  Spinner,
+} from "@shopify/polaris";
 import { useState, useEffect } from "react";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { userLoggedInFetch } from "../../App";
+
 import Templates from "./Templates";
 import Edit from "./Edit";
 import styled from "styled-components";
@@ -30,6 +39,8 @@ export const Table = ({ closeAnimate }) => {
   const app = useAppBridge();
   const fetch = userLoggedInFetch(app);
   const [actived, setActive] = useState();
+  const [loading, setloading] = useState(false);
+
   const [templates, set_templates] = useState([]);
   const [openState, setOpenState] = useState(false);
   const [choosedTemplate, setChoosedTemplate] = useState("");
@@ -37,6 +48,8 @@ export const Table = ({ closeAnimate }) => {
   const [editData, setEditData] = useState();
 
   async function getTemplate() {
+    setloading(true);
+
     const count = await fetch(`/announcementBar`).then((res) => res.json());
     set_templates(count);
     count.map((e) => {
@@ -44,6 +57,8 @@ export const Table = ({ closeAnimate }) => {
         setActive(e.uuid);
       }
     });
+    setloading(false);
+
     const theme = await fetch(`/theme`).then((res) => res.json());
   }
 
@@ -55,19 +70,23 @@ export const Table = ({ closeAnimate }) => {
   }
 
   async function activate(e) {
-    if (choosedTemplate === e.uuid) {
-      setChoosedTemplate("");
-      setActive();
-      await fetch(`/updateAll`).then((res) => res.status);
-    } else {
-      setChoosedTemplate(e.uuid);
-      setActive(e.uuid);
-      await fetch(`/update/${e.uuid}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ isActive: true }),
+    setloading(true);
+    await fetch(`/update/${e.uuid}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ isActive: "true" }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setloading(false);
+        if (data.success) {
+          setActive(e.uuid);
+        } else {
+          setActive();
+        }
       });
-    }
+    // getTemplate()
+    // }
   }
 
   const add = () => {
@@ -109,59 +128,77 @@ export const Table = ({ closeAnimate }) => {
               </Stack>
             </Layout.Section>
             <Layout.Section>
-              <Card>
-                <DataTable
-                  columnContentTypes={[
-                    "number",
-                    "text",
-                    "text",
-                    "text",
-                    "text",
-                  ]}
-                  headings={["Item.No", "Name", "Content", "Preview", "Action"]}
-                  rows={templates.map((info, index) => {
-                    return [
-                      index + 1,
-                      info.name,
-                      info.content + " " + info.currencyContent,
-                      <Stack>
-                        <div
-                          style={{
-                            //
-                            padding: "3px 40px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            background: info.background,
-                            color: info.fontColor,
-                            fontSize: "14px",
-                            borderRadius: "4px",
-                          }}
-                        >
-                          content
-                        </div>
-                        ,
-                      </Stack>,
-                      <Stack>
-                        <ActiveButton
-                          active={info.uuid === actived}
-                          onClick={() => activate(info)}
-                        >
-                          {info.uuid === actived ? "Actived " : "Paused"}
-                        </ActiveButton>
-                        <ActiveButton edit onClick={() => edit(info)}>
-                          Edit
-                        </ActiveButton>
+              {loading ? (
+                <div id="spinner">
+                  <Spinner accessibilityLabel="Spinner example" size="large" />
+                </div>
+              ) : (
+                <Card>
+                  <DataTable
+                    columnContentTypes={[
+                      "number",
+                      "text",
+                      "text",
+                      "text",
+                      "text",
+                    ]}
+                    headings={[
+                      "Item.No",
+                      "Name",
+                      "Content",
+                      "Preview",
+                      "Action",
+                    ]}
+                    rows={templates.map((info, index) => {
+                      return [
+                        index + 1,
+                        info.name,
+                        info.content + " " + info.currencyContent,
+                        <Stack>
+                          <div
+                            style={{
+                              //
+                              padding: "3px 40px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              background: info.background,
+                              color: info.fontColor,
+                              fontSize: "14px",
+                              borderRadius: "4px",
+                            }}
+                          >
+                            content
+                          </div>
+                          ,
+                        </Stack>,
+                        <Stack>
+                          <ActiveButton
+                            active={info.uuid === actived}
+                            onClick={() => activate(info)}
+                          >
+                            {info.uuid === actived ? "Actived " : "Paused"}
+                          </ActiveButton>
+                          <ActiveButton edit onClick={() => edit(info)}>
+                            Edit
+                          </ActiveButton>
 
-                        <ActiveButton delete onClick={() => deleted(info.uuid)}>
-                          Delete
-                        </ActiveButton>
-                      </Stack>,
-                    ];
-                  })}
-                />
-              </Card>
-              {templates.length === 0 ? (
+                          <ActiveButton
+                            delete
+                            onClick={() => deleted(info.uuid)}
+                          >
+                            Delete
+                          </ActiveButton>
+                        </Stack>,
+                      ];
+                    })}
+                  />
+                </Card>
+              )}
+
+              {loading ? (
+                ""
+              ) : templates.length === 0 ? (
                 <div class="msg">There Is No Templates Found</div>
               ) : (
                 ""
