@@ -158,7 +158,6 @@ export const Table = ({ closeAnimate }) => {
                           <div
                             style={{
                               //
-                              width: "40%",
                               padding: "3px 40px",
                               display: "flex",
                               alignItems: "center",
