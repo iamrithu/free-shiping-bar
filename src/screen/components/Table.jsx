@@ -78,14 +78,14 @@ export const Table = ({ closeAnimate }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setloading(false);
-        if (data.success) {
-          setActive(e.uuid);
-        } else {
-          setActive();
-        }
+        // setloading(false);
+        // if (data.success) {
+        //   setActive(e.uuid);
+        // } else {
+        //   setActive();
+        // }
+        getTemplate();
       });
-    // getTemplate()
     // }
   }
 
@@ -141,6 +141,7 @@ export const Table = ({ closeAnimate }) => {
                       return [
                         index + 1,
                         info.name,
+                        // info.content + " " + info.currencyContent,
                         <Stack>
                           <div
                             style={{
