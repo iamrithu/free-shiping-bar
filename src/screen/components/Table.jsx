@@ -78,15 +78,13 @@ export const Table = ({ closeAnimate }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // setloading(false);
-        // if (data.success) {
-        //   setActive(e.uuid);
-        // } else {
-        //   setActive();
-        // }
-        getTemplate();
+        setloading(false);
+        if (data.success) {
+          setActive(e.uuid);
+        } else {
+          setActive();
+        }
       });
-    // }
   }
 
   const add = () => {
