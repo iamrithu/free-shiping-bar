@@ -131,35 +131,36 @@ router.put("/update/:id", async (req, res) => {
     });
 
     return res.status(200).send({ success: false });
-  }
-  const data2 = await prisma.shipbars.findMany({
-    where: {
-      shop: test_session.shop,
-      isActive: "true",
-    },
-  });
-
-  if (data2.length < 1) {
-    const data = await prisma.shipbars.update({
-      where: { uuid: req.params.id },
-      data: { isActive: "true" },
+  } else {
+    const data = await prisma.shipbars.findMany({
+      where: {
+        shop: test_session.shop,
+        isActive: "true",
+      },
     });
-    return res.status(200).send({ success: true });
-  }
 
-  await prisma.shipbars
-    .update({
-      where: { uuid: data[0].uuid },
-      data: { isActive: "false" },
-    })
-    .then(async (value) => {
-      await prisma.shipbars.update({
+    if (data.length < 1) {
+      const data = await prisma.shipbars.update({
         where: { uuid: req.params.id },
         data: { isActive: "true" },
       });
-    });
+      return res.status(200).send({ success: true });
+    } else {
+      await prisma.shipbars
+        .update({
+          where: { uuid: data[0].uuid },
+          data: { isActive: "false" },
+        })
+        .then(async (value) => {
+          await prisma.shipbars.update({
+            where: { uuid: req.params.id },
+            data: { isActive: "true" },
+          });
+        });
 
-  return res.status(200).send({ success: true });
+      return res.status(200).send({ success: true });
+    }
+  }
 });
 
 router.delete("/delete/:id", async (req, res) => {
