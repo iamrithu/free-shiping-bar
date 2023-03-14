@@ -138,14 +138,14 @@ export const Table = ({ closeAnimate }) => {
                     columnContentTypes={[
                       "number",
                       "text",
-                      "text",
+                      // "text",
                       "text",
                       "text",
                     ]}
                     headings={[
                       "Item.No",
                       "Name",
-                      "Content",
+                      // "Content",
                       "Preview",
                       "Action",
                     ]}
@@ -153,7 +153,7 @@ export const Table = ({ closeAnimate }) => {
                       return [
                         index + 1,
                         info.name,
-                        info.content + " " + info.currencyContent,
+                        // info.content + " " + info.currencyContent,
                         <Stack>
                           <div
                             style={{
@@ -168,6 +168,16 @@ export const Table = ({ closeAnimate }) => {
                               borderRadius: "4px",
                             }}
                           >
+                            <span> {info.content}</span>
+                            <span
+                              style={{
+                                //
+
+                                color: info.specialTextColor,
+                              }}
+                            >
+                              {info.currencyContent}
+                            </span>{" "}
                             content
                           </div>
                           ,
