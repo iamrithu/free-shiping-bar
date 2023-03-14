@@ -135,25 +135,12 @@ export const Table = ({ closeAnimate }) => {
               ) : (
                 <Card>
                   <DataTable
-                    columnContentTypes={[
-                      "number",
-                      "text",
-                      // "text",
-                      "text",
-                      "text",
-                    ]}
-                    headings={[
-                      "Item.No",
-                      "Name",
-                      // "Content Preview",
-                      "Preview Contents",
-                      "Action",
-                    ]}
+                    columnContentTypes={["number", "text", "text", "text"]}
+                    headings={["Item.No", "Name", "Preview ", "Action"]}
                     rows={templates.map((info, index) => {
                       return [
                         index + 1,
                         info.name,
-                        // info.content + " " + info.currencyContent,
                         <Stack>
                           <div
                             style={{
