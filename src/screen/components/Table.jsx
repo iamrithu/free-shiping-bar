@@ -145,7 +145,7 @@ export const Table = ({ closeAnimate }) => {
                     headings={[
                       "Item.No",
                       "Name",
-                      // "Content",
+                      // "Content Preview",
                       "Preview",
                       "Action",
                     ]}
@@ -158,21 +158,22 @@ export const Table = ({ closeAnimate }) => {
                           <div
                             style={{
                               //
+                              width: "40%",
                               padding: "3px 40px",
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
                               background: info.background,
                               color: info.fontColor,
-                              fontSize: "14px",
+                              fontSize: "12px",
                               borderRadius: "4px",
                             }}
                           >
                             <span> {info.content}</span>
                             <span
                               style={{
-                                //
-
+                                fontSize: "12px",
+                                paddingLeft: "10px",
                                 color: info.specialTextColor,
                               }}
                             >
