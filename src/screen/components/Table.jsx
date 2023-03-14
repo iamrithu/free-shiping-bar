@@ -178,7 +178,6 @@ export const Table = ({ closeAnimate }) => {
                             >
                               {info.currencyContent}
                             </span>{" "}
-                            content
                           </div>
                           ,
                         </Stack>,
