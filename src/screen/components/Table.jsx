@@ -146,7 +146,7 @@ export const Table = ({ closeAnimate }) => {
                       "Item.No",
                       "Name",
                       // "Content Preview",
-                      "Preview",
+                      "Preview Contents",
                       "Action",
                     ]}
                     rows={templates.map((info, index) => {
